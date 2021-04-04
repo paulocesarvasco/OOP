@@ -59,4 +59,8 @@ public class Song {
 		this.duration = time;
 		return erro;
 	}
+	
+	public void showInfo() {
+		System.out.printf("			- %s - %s\n", this.name, this.artist);
+	}
 }
