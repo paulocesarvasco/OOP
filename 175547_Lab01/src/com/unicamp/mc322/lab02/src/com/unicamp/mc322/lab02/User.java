@@ -59,8 +59,26 @@ public class User {
 		
 		return error;
 	}
+	
 	public boolean changePlan() {
 		this.subscriber = !this.subscriber;
 		return false;
+	}
+	
+	public boolean addPlaylist(Playlist playList) {
+		boolean error = false;
+		
+		if (!this.subscriber && this.playLists.size() >= 3) {
+			System.out.printf("Max playlists added. Pls subscribe to add new playlists. ");
+			error = true;
+			return error;
+		}
+		if (this.subscriber && this.playLists.size() >= 10) {
+			System.out.printf("Max playlists added. ");
+			error = true;
+			return error;
+		}
+		this.playLists.add(playList);
+		return error;
 	}
 }
