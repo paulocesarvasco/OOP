@@ -1,9 +1,18 @@
 package com.unicamp.mc322.lab02;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class User {
 	
 	private String name;
 	private String cpf;
+	private String gender;
+	private int[] date = {0, 0, 0};
+	private boolean subscriber = false;
+	
+    private List<Playlist> playLists = new ArrayList<Playlist>();
 	
 	public User(String name, String cpf) {
 		this.name = name;
