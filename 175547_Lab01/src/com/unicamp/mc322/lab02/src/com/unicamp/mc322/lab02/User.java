@@ -23,6 +23,33 @@ public class User {
 		}
 		return error;
 	}
+	
+	public boolean setDate(int day, int month, int year) {
+		
+		boolean error = false;
+		
+		if (day < 0 || day > 31) {
+			System.out.printf("Invalid date. ");
+			error = true;
+		}
+		if (month < 0 || month > 12) {
+			System.out.printf("Invalid month. ");
+			error = true;
+		}
+		if (year < 0) {
+			System.out.printf("Invalid year. ");
+			error = true;
+		}
+		if (error) {
+			return error;
+		}
+		
+		this.date[0] = day;
+		this.date[1] = month;
+		this.date[2] = year;
+		
+		return error;
+	}
 	public boolean changePlan() {
 		this.subscriber = !this.subscriber;
 		return false;
