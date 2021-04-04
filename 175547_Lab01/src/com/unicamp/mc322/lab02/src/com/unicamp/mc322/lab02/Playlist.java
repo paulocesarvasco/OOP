@@ -2,10 +2,12 @@ package com.unicamp.mc322.lab02;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Playlist {
 	private String name;
 	private String rhythm;
+	private int index = 1;
 	
     private List<Song> songs = new ArrayList<Song>();
 
@@ -33,5 +35,34 @@ public class Playlist {
 			song.showInfo();
 		}
 		return error;
+	}
+	
+	public Song play() {
+		Song songPlayed = null;
+		
+		if (index <= this.songs.size()) {
+			songPlayed = this.songs.get(index);
+			index++;
+		} else {
+			System.out.printf("End playlist\n");
+		}
+		return songPlayed;
+	}
+	
+	public Song play(boolean shuffle) {
+		int randomIndex = 0;
+		Song songPlayed = null;
+		Random random = new Random();
+		
+		if (shuffle) {
+			do {
+				randomIndex = random.nextInt(this.songs.size());
+			} while (index == randomIndex);
+			index = randomIndex;
+		}
+		songPlayed = this.songs.get(index);
+		index++;
+		
+		return songPlayed;
 	}
 }
