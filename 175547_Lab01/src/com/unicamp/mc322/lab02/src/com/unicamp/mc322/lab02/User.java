@@ -81,4 +81,22 @@ public class User {
 		this.playLists.add(playList);
 		return error;
 	}
+	
+	public boolean showPlaylists() {
+		boolean error = false;
+		int index = 1;
+		System.out.printf("User: %s\n", this.name);
+		System.out.printf("Number of playlists: %d\n", this.playLists.size());
+		for (Playlist playlist : this.playLists) {
+			playlist.showSongs(index);
+			index++;
+		}
+		return error;
+	}
+	
+	public boolean showInformation() {
+		System.out.printf("Name: %s\n", this.name);
+		System.out.printf("CPF: %s\n", this.cpf);
+		return false;
+	}
 }
