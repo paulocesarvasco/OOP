@@ -9,6 +9,20 @@ public class User {
 		this.name = name;
 		this.cpf = cpf;
 	}
+	
+	public boolean setGender(String gender) {
+		
+		boolean error;
+		
+		if (Objects.equals(gender, "male") || Objects.equals(gender, "female")) {
+			this.gender = gender;
+			error = false;
+		} else {
+			System.out.printf("Invalid gender. ");
+			error = true;
+		}
+		return error;
+	}
 	public boolean changePlan() {
 		this.subscriber = !this.subscriber;
 		return false;
