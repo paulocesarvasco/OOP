@@ -9,4 +9,8 @@ public class User {
 		this.name = name;
 		this.cpf = cpf;
 	}
+	public boolean changePlan() {
+		this.subscriber = !this.subscriber;
+		return false;
+	}
 }
