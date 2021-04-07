@@ -129,6 +129,20 @@ public class User {
 		return error;
 	}
 	
+	public boolean removePlaylist(String playlistName) {
+		
+		boolean error = false;
+		Playlist playlistRemoved = null;
+
+		playlistRemoved = searchPlayList(playlistName);
+		if (playlistRemoved == null) {
+			error = true;
+			return error;
+		}
+		this.playLists.remove(playlistRemoved);
+		return error;
+	}
+	
 	public boolean showPlaylists() {
 		boolean error = false;
 		int index = 1;
