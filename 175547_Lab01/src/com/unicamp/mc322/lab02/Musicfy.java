@@ -15,28 +15,29 @@ public class Musicfy {
         Song song7 = new Song("Teo", "Hardcore", "Omoi");
         Song song8 = new Song("Sleepwalking", "Metalcore", "Bring Me The Horizon");
 
-        Playlist rockPlaylist = new Playlist("Awesome Rock Songs", "Rock");
-        rockPlaylist.addSong(song1);
-        rockPlaylist.addSong(song2);
+        user1.addPlaylist("Awesome Rock Songs", "Rock");
+        user1.addSongToPlaylist("Awesome Rock Songs", song1);
+        user1.addSongToPlaylist("Awesome Rock Songs", song2);
+        user1.addSongToPlaylist("Awesome Rock Songs", song3);
+        user1.addSongToPlaylist("Awesome Rock Songs", song4);
+        
+        user2.addPlaylist("Osu Memories", "hardcore");
+        user2.addSongToPlaylist("Osu Memories", song5);
+        user2.addSongToPlaylist("Osu Memories", song6);
+        user2.addSongToPlaylist("Osu Memories", song7);
 
-        Playlist osuPlaylist = new Playlist("Osu Memories", "hardcore");
-        osuPlaylist.addSong(song5);
-        osuPlaylist.addSong(song6);
-        osuPlaylist.addSong(song7);
-
-        Playlist metalcorePlaylist = new Playlist("Best of Metalcore", "Metalcore");
-        metalcorePlaylist.addSong(song8);
-
-        user1.addPlaylist(rockPlaylist);
-        user1.addPlaylist(metalcorePlaylist);
-        user2.addPlaylist(osuPlaylist);
+        user1.addPlaylist("Best of Metalcore", "Metalcore");
+        user1.addSongToPlaylist("Best of Metalcore", song8);
 
         user1.showPlaylists();
         System.out.println("");
         user2.showInformation();
 
-        Song asong1 = osuPlaylist.play();
-        Song asong2 = osuPlaylist.play();
-        Song asong3 = osuPlaylist.play(true);
+        Song asong4 = user1.playSong("Awesome Rock Songs", true);
+        Song asong3 = user1.playSong("Awesome Rock Songs", true);
+        Song asong1 = user2.playSong("Osu Memories");
+        Song asong2 = user2.playSong("Osu Memories");
+        
+        
     }
 }
