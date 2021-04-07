@@ -13,6 +13,10 @@ public class Song {
 		this.artist = artist;
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
 	public boolean renameSong(String newName) {
 		boolean error = false;
 		

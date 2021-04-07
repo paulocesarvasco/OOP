@@ -1,8 +1,9 @@
 package com.unicamp.mc322.lab02;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 public class Playlist {
@@ -18,6 +19,15 @@ public class Playlist {
 		this.rhythm = rhythm;
 	}
 	
+	// A implementação do método de ordenação da lista foi retirada do stackoverflow
+	private void sortPlaylist() {
+		Collections.sort(songs, new Comparator<Song>() {
+		      public int compare(final Song song1, final Song song2) {
+		          return song1.getName().compareTo(song2.getName());
+		      }
+		  });
+	}
+	
 	public String getName() {
 		return this.name;
 	}
@@ -30,8 +40,12 @@ public class Playlist {
 		
 		boolean error = false;
 		
-		error = this.songs.add(song);
-		return !error;
+		error = !this.songs.add(song);
+		if (error) {
+			System.out.printf("Error to add new music in playlist. ");
+		}
+		sortPlaylist();
+		return error;
 	}
 	
 	public boolean showSongs(int index) {
