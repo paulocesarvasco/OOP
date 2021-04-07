@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class Playlist {
@@ -46,6 +47,37 @@ public class Playlist {
 		}
 		sortPlaylist();
 		return error;
+	}
+	
+	public boolean removeSong(Song song) {
+		
+		boolean error = false;
+		Song songRemoved = null;
+
+		songRemoved = searchSong(song.getName());
+		if (songRemoved == null) {
+			error = true;
+			return error;
+		}
+		this.songs.remove(songRemoved);
+		return error;
+	}
+	
+	private Song searchSong(String songName) {
+		
+		boolean itemFounded = false;
+		Song SongFound = null;
+
+		for (Song searchedSong : this.songs) {
+			if (Objects.equals(searchedSong.getName(), songName)) {
+				SongFound = searchedSong;
+				itemFounded = true;
+			}
+		}
+		if (!itemFounded) {
+			System.out.printf("Song not found. ");
+		}
+		return SongFound;
 	}
 	
 	public boolean showSongs(int index) {
