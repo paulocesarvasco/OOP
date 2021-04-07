@@ -62,6 +62,11 @@ public class User {
 	
 	public boolean changePlan() {
 		this.subscriber = !this.subscriber;
+		if (this.subscriber) {
+			maxSongs = 100;
+		} else {
+			maxSongs = 10;
+		}
 		return false;
 	}
 	
