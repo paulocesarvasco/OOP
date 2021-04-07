@@ -2,12 +2,13 @@ package com.unicamp.mc322.lab02;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class Playlist {
 	private String name;
 	private String rhythm;
-	private int index = 1;
+	private int index = 0;
 	
     private List<Song> songs = new ArrayList<Song>();
 
@@ -15,6 +16,14 @@ public class Playlist {
 	public Playlist(String name, String rhythm) {
 		this.name = name;
 		this.rhythm = rhythm;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public int playlistSize() {
+		return this.songs.size();
 	}
 	
 	public boolean addSong(Song song) {
@@ -44,7 +53,7 @@ public class Playlist {
 			songPlayed = this.songs.get(index);
 			index++;
 		} else {
-			System.out.printf("End playlist\n");
+			System.out.printf("End playlist. ");
 		}
 		return songPlayed;
 	}
