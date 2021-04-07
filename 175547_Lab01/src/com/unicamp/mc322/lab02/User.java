@@ -71,7 +71,7 @@ public class User {
 		return false;
 	}
 	
-	public boolean addPlaylist(Playlist playList) {
+	public boolean addPlaylist(String name, String rhythm) {
 		boolean error = false;
 		
 		if (!this.subscriber && this.playLists.size() >= 3) {
@@ -84,7 +84,48 @@ public class User {
 			error = true;
 			return error;
 		}
-		this.playLists.add(playList);
+		
+		Playlist newPlayList = new Playlist(name, rhythm);
+		this.playLists.add(newPlayList);
+		return error;
+	}
+	
+	private Playlist searchPlayList(String playListName) {
+		
+		boolean itemFounded = false;
+		
+		Playlist playListFounded = null;
+
+		for (Playlist searchedPlaylist : this.playLists) {
+			if (Objects.equals(searchedPlaylist.getName(), playListName)) {
+				playListFounded = searchedPlaylist;
+				itemFounded = true;
+			}
+		}
+		if (!itemFounded) {
+			System.out.printf("Playlist not found. ");
+		}
+		return playListFounded;
+	}
+	
+	public boolean addSongToPlaylist(String playlistName, Song song) {
+		
+		boolean error = false;
+		Playlist playlistFounded = null;
+
+		playlistFounded = searchPlayList(playlistName);
+		if (playlistFounded == null) {
+			error = true;
+			return error;
+		}
+		if (playlistFounded.playlistSize() >= maxSongs) {
+			System.out.printf("Playlist full. ");
+			if (!this.subscriber) {
+				System.out.printf("Change your plan to add new musics. ");
+			}
+		}
+		
+		error = playlistFounded.addSong(song);
 		return error;
 	}
 	
@@ -104,5 +145,31 @@ public class User {
 		System.out.printf("Name: %s\n", this.name);
 		System.out.printf("CPF: %s\n", this.cpf);
 		return false;
+	}
+
+	public Song playSong(String playlistName) {
+		
+		Playlist playlistFounded = null;
+		Song songPlayed = null;
+
+		playlistFounded = searchPlayList(playlistName);
+		if (playlistFounded != null) {
+			songPlayed = playlistFounded.play();
+		}
+		
+		return songPlayed;
+	}
+	
+	public Song playSong(String playlistName, boolean shuffle) {
+		
+		Playlist playlistFounded = null;
+		Song songPlayed = null;
+
+		playlistFounded = searchPlayList(playlistName);
+		if (playlistFounded != null) {
+			songPlayed = playlistFounded.play(shuffle);
+		}
+		
+		return songPlayed;
 	}
 }
