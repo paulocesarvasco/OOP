@@ -11,6 +11,7 @@ public class User {
 	private String gender;
 	private int[] date = {0, 0, 0};
 	private boolean subscriber = false;
+	private int maxSongs = 10;
 	
     private List<Playlist> playLists = new ArrayList<Playlist>();
 	
