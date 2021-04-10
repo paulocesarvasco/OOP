@@ -205,4 +205,22 @@ public class User {
 		
 		return songPlayed;
 	}
+	
+	public boolean transferPlaylist(User user, String playlistName) {
+		
+		boolean error = false;
+		Playlist playlistTransfered = null;
+		
+		playlistTransfered = searchPlayList(playlistName);
+		if (playlistTransfered == null) {
+			error = true;
+			return error;
+		}
+		user.addPlaylist(playlistTransfered);
+		removePlaylist(playlistName);
+		
+		return error;
+		
+	}
+
 }
