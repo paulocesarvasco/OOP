@@ -120,4 +120,86 @@ public class Playlist {
 		
 		return songPlayed;
 	}
+
+	public Song shortestSong() {
+		
+		Song shortestSong = new Song ("", "", "", 1000000000);
+		for (Song song : this.songs) {
+			if (song.getDuration() <= shortestSong.getDuration()) {
+				shortestSong = song;
+			}
+		}
+		return shortestSong;
+	}
+	
+	public Song longestSong() {
+		
+		Song longestSong = new Song ("", "", "", 0);
+		for (Song song : this.songs) {
+			if (song.getDuration() <= longestSong.getDuration()) {
+				longestSong = song;
+			}
+		}
+		return longestSong;
+	}
+	
+	public float averageLenght() {
+		
+		float lenght = 0;
+
+		for (Song song : this.songs) {
+			lenght += song.getDuration();
+		}
+		lenght /= this.songs.size();
+		
+		return lenght;
+	}
+	
+	public float totalLenght() {
+		
+		float lenght = 0;
+
+		for (Song song : this.songs) {
+			lenght += song.getDuration();
+		}
+		
+		return lenght;
+	}
+	
+	public String mostFamousArtist() {
+		
+		List<Artist> artists = new ArrayList<Artist>();
+		Artist artist = new Artist();
+		boolean artistFound = false;
+		
+		for (Song song : this.songs) {
+			if (artists.isEmpty()) {
+				artist.setName(song.getArtist());
+				artist.setOccurrences();
+				artists.add(artist);
+			} else {
+				for (Artist checkArtist : artists) {
+					if (Objects.equals(checkArtist.getName(), song.getArtist())) {
+						artist.setOccurrences();
+						artistFound = true;
+					}
+				}
+				if (!artistFound) {
+					artist.setName(song.getArtist());
+					artist.setOccurrences();
+					artists.add(artist);
+				}
+			}
+		}
+		artist.zeroOccurrences();
+		for (Artist checkArtist : artists) {
+			if (artist.getOccurrences() < checkArtist.getOccurrences()) {
+				artist = checkArtist;
+			}
+		}
+		
+		return artist.getName();
+	}
+	
+	
 }
