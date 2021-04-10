@@ -90,6 +90,25 @@ public class User {
 		return error;
 	}
 	
+	public boolean addPlaylist(Playlist playlist) {
+
+		boolean error = false;
+		
+		if (!this.subscriber && this.playLists.size() >= 3) {
+			System.out.printf("Max playlists added. Pls subscribe to add new playlists. ");
+			error = true;
+			return error;
+		}
+		if (this.subscriber && this.playLists.size() >= 10) {
+			System.out.printf("Max playlists added. ");
+			error = true;
+			return error;
+		}
+		
+		this.playLists.add(playlist);
+		return error;
+	}
+	
 	private Playlist searchPlayList(String playListName) {
 		
 		boolean itemFounded = false;
