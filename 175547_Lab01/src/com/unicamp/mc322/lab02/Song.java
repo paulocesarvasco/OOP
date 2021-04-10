@@ -5,9 +5,9 @@ public class Song {
 	private String name;
 	private String rhythm;
 	private String artist;
-	private float duration;
+	private double duration;
 	
-	public Song(String name, String rhythm, String artist, float duration) {
+	public Song(String name, String rhythm, String artist, double duration) {
 		this.name = name;
 		this.rhythm = rhythm;
 		this.artist = artist;
@@ -18,7 +18,7 @@ public class Song {
 		return this.name;
 	}
 	
-	public float getDuration() {
+	public double getDuration() {
 		return this.duration;
 	}
 	
