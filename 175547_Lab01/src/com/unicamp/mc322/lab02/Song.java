@@ -7,10 +7,23 @@ public class Song {
 	private String artist;
 	private float duration;
 	
-	public Song(String name, String rhythm, String artist) {
+	public Song(String name, String rhythm, String artist, float duration) {
 		this.name = name;
 		this.rhythm = rhythm;
 		this.artist = artist;
+		this.duration = duration;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public float getDuration() {
+		return this.duration;
+	}
+	
+	public String getArtist() {
+		return this.artist;
 	}
 	
 	public boolean renameSong(String newName) {

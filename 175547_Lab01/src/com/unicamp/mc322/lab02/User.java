@@ -90,6 +90,25 @@ public class User {
 		return error;
 	}
 	
+	public boolean addPlaylist(Playlist playlist) {
+
+		boolean error = false;
+		
+		if (!this.subscriber && this.playLists.size() >= 3) {
+			System.out.printf("Max playlists added. Pls subscribe to add new playlists. ");
+			error = true;
+			return error;
+		}
+		if (this.subscriber && this.playLists.size() >= 10) {
+			System.out.printf("Max playlists added. ");
+			error = true;
+			return error;
+		}
+		
+		this.playLists.add(playlist);
+		return error;
+	}
+	
 	private Playlist searchPlayList(String playListName) {
 		
 		boolean itemFounded = false;
@@ -126,6 +145,20 @@ public class User {
 		}
 		
 		error = playlistFounded.addSong(song);
+		return error;
+	}
+	
+	public boolean removePlaylist(String playlistName) {
+		
+		boolean error = false;
+		Playlist playlistRemoved = null;
+
+		playlistRemoved = searchPlayList(playlistName);
+		if (playlistRemoved == null) {
+			error = true;
+			return error;
+		}
+		this.playLists.remove(playlistRemoved);
 		return error;
 	}
 	
@@ -172,4 +205,22 @@ public class User {
 		
 		return songPlayed;
 	}
+	
+	public boolean transferPlaylist(User user, String playlistName) {
+		
+		boolean error = false;
+		Playlist playlistTransfered = null;
+		
+		playlistTransfered = searchPlayList(playlistName);
+		if (playlistTransfered == null) {
+			error = true;
+			return error;
+		}
+		user.addPlaylist(playlistTransfered);
+		removePlaylist(playlistName);
+		
+		return error;
+		
+	}
+
 }
