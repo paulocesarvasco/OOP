@@ -18,6 +18,14 @@ public class Song {
 		return this.name;
 	}
 	
+	public float getDuration() {
+		return this.duration;
+	}
+	
+	public String getArtist() {
+		return this.artist;
+	}
+	
 	public boolean renameSong(String newName) {
 		boolean error = false;
 		
