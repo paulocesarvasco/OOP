@@ -136,7 +136,7 @@ public class Playlist {
 		
 		Song longestSong = new Song ("", "", "", 0);
 		for (Song song : this.songs) {
-			if (song.getDuration() <= longestSong.getDuration()) {
+			if (song.getDuration() > longestSong.getDuration()) {
 				longestSong = song;
 			}
 		}
