@@ -74,6 +74,6 @@ public class Song {
 	}
 	
 	public void showInfo() {
-		System.out.printf("		- %s - %s\n", this.name, this.artist);
+		System.out.printf("		- %s - %s - %.2f - %s\n", this.name, this.artist, this.duration, this.rhythm);
 	}
 }
