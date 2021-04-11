@@ -53,12 +53,12 @@ public class User {
 		boolean error = false;
 		
 		if (!this.subscriber && this.playLists.size() >= 3) {
-			System.out.printf("Max playlists added. Pls subscribe to add new playlists. ");
+			System.out.printf("Max playlists added. Pls subscribe to add new playlists.\n");
 			error = true;
 			return error;
 		}
 		if (this.subscriber && this.playLists.size() >= 10) {
-			System.out.printf("Max playlists added. ");
+			System.out.printf("Max playlists added.\n");
 			error = true;
 			return error;
 		}
@@ -72,16 +72,28 @@ public class User {
 
 		boolean error = false;
 		
-		if (!this.subscriber && this.playLists.size() >= 3) {
-			System.out.printf("Max playlists added. Pls subscribe to add new playlists. ");
+		if (this.subscriber) {
+			if (this.playLists.size() >= 10) {
+				System.out.printf("Max playlists added.\n");
+				error = true;
+				return error;
+			} else if (playlist.size() > 100) {
+				System.out.printf("Playlist exceeds 100 songs.\n");
+				error = true;
+				return error;
+			}
+		} else {
+			if (this.playLists.size() >= 3) {
+			System.out.printf("Max playlists added. Pls subscribe to add new playlists.\n");
 			error = true;
 			return error;
+			} else if (playlist.size() > 10) {
+				System.out.printf("Playlist exceeds 10 songs. Pls subscribe to add new playlists up to 100 songs.\n");
+				error = true;
+				return error;
+			}
 		}
-		if (this.subscriber && this.playLists.size() >= 10) {
-			System.out.printf("Max playlists added. ");
-			error = true;
-			return error;
-		}
+		
 		
 		this.playLists.add(playlist);
 		return error;
@@ -118,11 +130,12 @@ public class User {
 		if (playlistFounded.playlistSize() >= maxSongs) {
 			System.out.printf("Playlist full. ");
 			if (!this.subscriber) {
-				System.out.printf("Change your plan to add new musics. ");
+				System.out.println("Change your plan to add new musics.");
+				error = true;
 			}
+		} else {
+			error = playlistFounded.addSong(song);
 		}
-		
-		error = playlistFounded.addSong(song);
 		return error;
 	}
 	
@@ -202,8 +215,10 @@ public class User {
 			error = true;
 			return error;
 		}
-		user.addPlaylist(playlistTransfered);
-		removePlaylist(playlistName);
+		error = user.addPlaylist(playlistTransfered);
+		if (!error) {
+			removePlaylist(playlistName);
+		}
 		
 		return error;
 		
