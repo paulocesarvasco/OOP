@@ -37,6 +37,10 @@ public class Playlist {
 		return this.songs.size();
 	}
 	
+	public int size() {
+		return this.songs.size();
+	}
+	
 	public boolean addSong(Song song) {
 		
 		boolean error = false;
@@ -84,6 +88,7 @@ public class Playlist {
 		
 		boolean error = false;
 		System.out.printf("Playlist %d: %s\n", index, this.name);
+		System.out.printf("		Rhythm: %s\n", this.rhythm);
 		System.out.printf("		Number of Songs: %d\n", this.songs.size());
 		System.out.println("		Songs:");
 		for (Song song : this.songs) {
