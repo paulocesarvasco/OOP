@@ -14,4 +14,20 @@ public class User {
 		this.endereco[0] = X;
 		this.endereco[1] = Y;
 	}
+	
+	public int getPedidos() {
+		return this.pedidos;
+	}
+	
+	public void incrementarPedido() {
+		this.pedidos += 1;
+	}
+	
+	public String getNome() {
+		return this.nome;
+	}
+	
+	public String getCpf() {
+		return this.cpf;
+	}
 }
