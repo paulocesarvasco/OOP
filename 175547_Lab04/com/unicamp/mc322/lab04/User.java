@@ -5,6 +5,7 @@ public class User {
 	private String nome;
 	private String cpf;
 	private int endereco[] = new int[2];
+	private int pedidos = 0;
 	
 	// Construtor
 	public User(String nome, String cpf, int X, int Y) {
