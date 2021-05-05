@@ -10,5 +10,11 @@ public class Semanal extends Comum {
 		super(descricao);
 		this.dia = dia;
 	}
+	
+	@Override
+	public void imprimir() {
+		System.out.println(this.dia);
+		super.imprimir();
+	}
 
 }

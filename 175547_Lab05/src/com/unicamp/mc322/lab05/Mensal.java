@@ -4,7 +4,7 @@ import java.time.Month;
 
 public class Mensal extends Comum {
 
-	protected Month mes;
+	private Month mes;
 
 	public Mensal(String descricao, Month mes) {
 		super(descricao);
