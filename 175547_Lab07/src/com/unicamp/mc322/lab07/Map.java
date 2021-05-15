@@ -2,12 +2,12 @@ package com.unicamp.mc322.lab07;
 
 public class Map {
 
-	private Posicao[][] map = new Posicao[8][8]; 
+	private Posicao[][] map = new Posicao[10][10]; 
 	
 	public Map() {
-		for (int x = 0; x < 8; x++) {
-			for(int y = 0; y < 8; y++) {
-				this.map[x][y].alterarPosicao('-', '-');
+		for (int x = 0; x < 10; x++) {
+			for(int y = 0; y < 10; y++) {
+				map[x][y] = new Posicao();
 			}
 		}
 	}
@@ -21,7 +21,7 @@ public class Map {
 	}
 	
 	public void criarPredador(int x1, int y1, int x2, int y2) {
-		if(Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2)) == 1) {
+		if(Math.abs(x1 - x2) <= 1 && Math.abs(y1 - y2) <= 1) {
 			this.map[x1][y1].alterarPosicao('$', '$');
 			this.map[x2][y2].alterarPosicao('$', '$');
 		}
@@ -48,5 +48,14 @@ public class Map {
 	
 	private int calcularDistancia(int x1, int y1, int x2, int y2) {
 		return Math.abs(x1 - x2) + Math.abs(y1 - y2);
+	}
+	
+	public void mostrarMapa() {
+		for (int x = 0; x < 10; x++) {
+			for(int y = 0; y < 10; y++) {
+				this.map[x][y].mostrarPosicao();
+			}
+			System.out.println("");
+		}
 	}
 }
