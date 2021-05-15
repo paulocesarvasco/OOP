@@ -2,10 +2,19 @@ package com.unicamp.mc322.lab07;
 
 public class Posicao {
 
-	private char position[] = new char[2];
+	private char posicao[] = new char[2];
+	
+	public Posicao() {
+		this.posicao[0] = '-';
+		this.posicao[1] = '-';
+	}
 	
 	public void alterarPosicao(char a, char b) {
-		this.position[0] = a;
-		this.position[1] = b;
+		this.posicao[0] = a;
+		this.posicao[1] = b;
+	}
+	
+	public void mostrarPosicao() {
+		System.out.printf("%c%c", posicao[0], posicao[1]);
 	}
 }
