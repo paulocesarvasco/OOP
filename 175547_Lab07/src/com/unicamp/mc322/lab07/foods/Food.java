@@ -9,4 +9,8 @@ public abstract class Food {
 	public int[] getPosicao() {
 		return this.posicao;
 	}
+	
+	public int getSatisfacao() {
+		return this.satisfacao;
+	}
 }
