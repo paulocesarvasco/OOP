@@ -1,7 +1,9 @@
 package com.unicamp.mc322.lab07.frogs;
 
+import com.unicamp.mc322.lab07.map.Utils;
+
 public class Verde extends Frog {
-	
+
 	public Verde(String nome, int x, int y) {
 		super();
 		super.nome = nome;
@@ -10,58 +12,51 @@ public class Verde extends Frog {
 	}
 
 	@Override
-	protected void atualizarPosicao(int x, int y) {
-		super.posicaoAnterior = super.posicaoAtual;
-		super.posicaoAtual[0] = x;
-		super.posicaoAtual[1] = y;
-	}
-
-	@Override
-	public boolean moverCima(int posicoes) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean moverBaixo(int posicoes) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean moverEsquerda(int posicoes) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean moverDireita(int posicoes) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean moverCima() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean continuaJogo = true;
+		if (super.posicaoAtual[0] - 1 >= 0) {
+			atualizarPosicao(super.posicaoAtual[0] - 1, super.posicaoAtual[1]);
+		} else {
+			continuaJogo = false;
+		}
+		return continuaJogo;
 	}
 
 	@Override
 	public boolean moverBaixo() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean continuaJogo = true;
+		if (super.posicaoAtual[0] + 1 < Utils.getMapSize()) {
+			atualizarPosicao(super.posicaoAtual[0] + 1, super.posicaoAtual[1]);
+		} else {
+			continuaJogo = false;
+		}
+		return continuaJogo;
 	}
 
 	@Override
 	public boolean moverEsquerda() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean continuaJogo = true;
+		if (super.posicaoAtual[1] - 1 >= 0) {
+			atualizarPosicao(super.posicaoAtual[0], super.posicaoAtual[1] - 1);
+		} else {
+			continuaJogo = false;
+		}
+		return continuaJogo;
 	}
 
 	@Override
 	public boolean moverDireita() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean continuaJogo = true;
+		if (super.posicaoAtual[1] + 1 < Utils.getMapSize()) {
+			atualizarPosicao(super.posicaoAtual[0], super.posicaoAtual[1] + 1);
+		} else {
+			continuaJogo = false;
+		}
+		return continuaJogo;
 	}
 
+	@Override
+	public void aumentarSatisfacao(double satisfacao) {
+		super.satisfacao += satisfacao;
+	}
 }
