@@ -1,4 +1,4 @@
-package com.unicamp.mc322.lab07;
+package com.unicamp.mc322.lab07.map;
 
 public class Posicao {
 
@@ -15,6 +15,6 @@ public class Posicao {
 	}
 	
 	public void mostrarPosicao() {
-		System.out.printf("%c%c", posicao[0], posicao[1]);
+		System.out.printf("%c%c ", posicao[0], posicao[1]);
 	}
 }
