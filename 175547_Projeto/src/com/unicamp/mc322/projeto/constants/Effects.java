@@ -12,5 +12,6 @@ public enum Effects {
 	GET_A_CARD,
 	ZEROIZE_UNIT,
 	BARRIER,
-	HIT_NEXUS
+	HIT_NEXUS,
+	NONE
 }
