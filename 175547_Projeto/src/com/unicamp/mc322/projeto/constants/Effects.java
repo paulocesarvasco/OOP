@@ -1,0 +1,16 @@
+package com.unicamp.mc322.projeto.constants;
+
+public enum Effects {
+	UP_ALL_UNITS,
+	UP_AN_UNIT,
+	DESTROY_ENEMY,
+	CURE_AN_UNIT,
+	DOUBLE_POINTS,
+	ONE_X_ONE,
+	ATTACK_NEXUS,
+	ATTACK_ALL_ENEMIES,
+	GET_A_CARD,
+	ZEROIZE_UNIT,
+	BARRIER,
+	HIT_NEXUS
+}
