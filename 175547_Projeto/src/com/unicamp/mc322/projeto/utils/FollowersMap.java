@@ -46,16 +46,16 @@ public final class FollowersMap {
 		mapFollowerCost.put(Followers.PORO_DEFENSOR, new Attributes(1, 1, 2));
 	}
 	
-	public static Effects getEffect(Followers FollowerName) {
-		return mapFollowerEffect.get(FollowerName);
+	public static Effects getEffect(Followers followerName) {
+		return mapFollowerEffect.get(followerName);
 	}
 	
-	public static Traces getTrace(Followers FollowerName) {
-		return mapFollowerTrace.get(FollowerName);
+	public static Traces getTrace(Followers followerName) {
+		return mapFollowerTrace.get(followerName);
 	}
 	
-	public static Attributes getCost(Followers FollowerName) {
-		return mapFollowerCost.get(FollowerName);
+	public static Attributes getCost(Followers followerName) {
+		return mapFollowerCost.get(followerName);
 	}
 	
 }
