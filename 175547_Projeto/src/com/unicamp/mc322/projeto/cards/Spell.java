@@ -14,6 +14,7 @@ public class Spell extends Card {
 		Spells effectName = randomSpell();
 		super.name = effectName.toString();
 		super.cost = getCost(effectName);
+		super.type = TypeCards.SPECIAL;
 		effect = getEffect(effectName);
 	}
 	
